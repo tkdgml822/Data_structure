@@ -21,26 +21,28 @@ void LInsert(List * plist, LData data)
 
 int LFirst(List * plist, LData * pdata)
 {
-	if(plist->numOfData == 0)
+	if(plist->numOfData == 0) {
 		return FALSE;
+	}
 
 	(plist->curPosition) = 0;
 	*pdata = plist->arr[0];
 	return TRUE;
 }
 
-int LNext(List * plist, LData * pdata)
-{
-	if(plist->curPosition >= (plist->numOfData)-1)
+int LNext(List * plist, LData * pdata) {
+	if(plist->curPosition >= (plist->numOfData)-1) {
 		return FALSE;
+	}
 
+	// index plus
 	(plist->curPosition)++;
+	// +1이된 증간한 값을 pdata 대입
 	*pdata = plist->arr[plist->curPosition];
 	return TRUE;
 }
 
-LData LRemove(List * plist)
-{
+LData LRemove(List * plist) {
 	int rpos = plist->curPosition;
 	int num = plist->numOfData;
 	int i;
