@@ -31,6 +31,7 @@ int LFirst(List * plist, LData * pdata)
 }
 
 int LNext(List * plist, LData * pdata) {
+	// 현재 위치가 데이터의 수 보다 커지거나 같으면 FALSE return
 	if(plist->curPosition >= (plist->numOfData)-1) {
 		return FALSE;
 	}
@@ -48,9 +49,12 @@ LData LRemove(List * plist) {
 	int i;
 	LData rdata = plist->arr[rpos];
 
-	for(i=rpos; i<num-1; i++)
+	// 없애진 숫자를 한 칸씩 뒤로 미룬다.
+	for(i=rpos; i<num-1; i++) {
 		plist->arr[i] = plist->arr[i+1];
-
+	}
+	
+	// 없어지고 나서 데이터 수와 현재 위치를 하나 빼준다.
 	(plist->numOfData)--;
 	(plist->curPosition)--;
 	return rdata;
