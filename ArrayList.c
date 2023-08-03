@@ -25,7 +25,7 @@ int LFirst(List * plist, LData * pdata)
 		return FALSE;
 	}
 
-	(plist->curPosition) = 0;
+	(plist->curPosition) = 0;;
 	*pdata = plist->arr[0];
 	return TRUE;
 }

@@ -26,6 +26,8 @@ int main(void) {
 
     // 리스트 합
     if(LFirst(&list, &data)) {
+        sum += data;
+        
         while(LNext(&list, &data)) {
             sum += data;
         }
@@ -36,14 +38,26 @@ int main(void) {
 
     // 2와 3의 배수 삭제하기
     if(LFirst(&list, &data)) {
+        // data가 처음부터 2와 3의 배수이면 삭제
         if (((data % 2) == 0) && ((data % 3) == 0)) {
-                
+            LRemove(&list); 
         }
+
         while(LNext(&list, &data)) {
-            sum += data;
+            if (((data % 2) == 0) && ((data % 3) == 0)) {
+                LRemove(&list); 
+            }
         }
     };
 
+    // List에 저장된 데이터를 순서대로 출력한다.
+    if(LFirst(&list, &data)) {
+        printf("%d ", data);
+
+        while(LNext(&list, &data)) {
+            printf("%d ", data);
+        }
+    }
 
     return 0;
 }
