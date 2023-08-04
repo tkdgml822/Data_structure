@@ -6,7 +6,7 @@
 
 /*** ArrayList�� ���� ****/
 #define LIST_LEN	100
-// int를 LData로 재정의
+// int를 LData로 재정의 
 typedef int LData;
 
 typedef struct __ArrayList {

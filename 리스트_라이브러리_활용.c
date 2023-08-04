@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "ArrayList.h"
 #include "ArrayList.c"
 
 // 리스트를 생성 및 초기화 한 다음, 정수 1부터 9까지 리스트에 저장한다.
@@ -13,21 +12,16 @@ int main(void) {
     
     // 초기화
     ListInit(&list);
+
     // 값 넣기 (1 ~ 9)
-    LInsert(&list, 1);
-    LInsert(&list, 2);
-    LInsert(&list, 3);
-    LInsert(&list, 4);
-    LInsert(&list, 5);
-    LInsert(&list, 6);
-    LInsert(&list, 7);
-    LInsert(&list, 8);
-    LInsert(&list, 9);
+    LInsert(&list, 1); LInsert(&list, 2); LInsert(&list, 3);
+    LInsert(&list, 4); LInsert(&list, 5); LInsert(&list, 6);
+    LInsert(&list, 7); LInsert(&list, 8); LInsert(&list, 9);
 
     // 리스트 합
     if(LFirst(&list, &data)) {
         sum += data;
-        
+
         while(LNext(&list, &data)) {
             sum += data;
         }
@@ -45,7 +39,7 @@ int main(void) {
 
         while(LNext(&list, &data)) {
             if (((data % 2) == 0) && ((data % 3) == 0)) {
-                LRemove(&list); 
+                LRemove(&list);
             }
         }
     };
