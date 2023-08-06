@@ -1,4 +1,4 @@
-#include "Point.h"
+#include "NameCard.h"
 #ifndef __ARRAY_LIST_H__
 #define __ARRAY_LIST_H__
 
@@ -8,7 +8,7 @@
 /*** ArrayList�� ���� ****/
 #define LIST_LEN	100
 // int를 LData로 재정의(전) -> Point 구조체로 변경 
-typedef Point * LData;
+typedef NameCard * LData;
 
 typedef struct __ArrayList {
 	// Point의 구고체 100개 생성
