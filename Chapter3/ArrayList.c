@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include "ArrayList.h"
 
-void ListInit(List * plist)
-{
+void ListInit(List * plist) {
 	(plist->numOfData) = 0;
 	(plist->curPosition) = -1;
 }
@@ -40,6 +39,7 @@ int LNext(List * plist, LData * pdata) {
 	(plist->curPosition)++;
 	// +1이된 증간한 값을 pdata 대입
 	*pdata = plist->arr[plist->curPosition];
+
 	return TRUE;
 }
 
