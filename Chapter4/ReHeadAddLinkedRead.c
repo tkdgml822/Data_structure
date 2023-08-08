@@ -38,7 +38,7 @@ int main(void) {
         //     head = newNode;
         // }
         // else {
-        //     tail->next = newNode;
+        //     tail->next = newNode;ㅍ	
         // }
 
         // tail = newNode;
