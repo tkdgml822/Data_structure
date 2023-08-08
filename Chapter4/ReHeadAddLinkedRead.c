@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 typedef struct _node {
-  int data;
-  struct _node * next;  
+    int data;
+    struct _node * next;
 } Node;
 
 int main(void) {
@@ -14,8 +14,8 @@ int main(void) {
     Node * newNode = NULL;
     int readData;
 
-    while(1) {
-        printf("자연수 입력");
+    while (1) {
+        printf("자연수를 입력하세요 : ");
         scanf("%d", &readData);
         if (readData < 1) {
             break;
@@ -34,44 +34,45 @@ int main(void) {
             head = newNode;
         }
 
-        
-    }
-    printf("\n");
+        // if (head == NULL) {
+        //     head = newNode;
+        // }
+        // else {
+        //     tail->next = newNode;
+        // }
 
-    // 입력 받은 데이터의 출력 과정
+        // tail = newNode;
+    }
+
+    // 데이터 출력
     if(head == NULL) {
-        printf("저장된 자연수가 존재하지 않습니다! \n");
+        printf("출력할 데이터가 없습니다.");
     }
     else {
         cur = head;
+
         printf("%d ", cur->data);
-        
         while(cur->next != NULL) {
             cur = cur->next;
             printf("%d ", cur->data);
         }
     }
+
     printf("\n\n");
 
-    // 메모리의 해제과정 //
-    if(head == NULL) {
-        return 0; // 해체할 노드가 존재하지 않음
+    // 데이터 삭제
+    Node * delNode = head;
+    Node * delNextNode = delNode->next;
+
+    printf("%d을 삭제합니다. \n", head->data);
+    free(delNode);
+    while(delNode->next != NULL) {
+        delNode = delNextNode;
+        delNextNode = delNextNode->next;
+        printf("%d을 삭제합니다. \n", delNode->data);
+        free(delNode);
     }
-    else {
-        Node * delNode = head;
-        Node * delNextNode = head->next;
 
-        printf("%d을(를) 삭제합니다. \n", head->data);
-        free(delNode); // 첫 번째 노드 삭제
 
-        while(delNextNode != NULL) {
-            delNode = delNextNode;
-            delNextNode = delNextNode->next;
-
-            printf("%d을(를) 삭제합니다. \n", delNode->data);
-            free(delNode);
-        }
-    }
-    
     return 0;
 }
