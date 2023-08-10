@@ -11,19 +11,19 @@ int pointSort(LData d1, LData d2) {
     if (x1 > x2) {
         return 0;
     }
-    else {
+    else if (x1 == x2){
         // x가 같을 경우 y로 판단
-        if (x1 == x2) {
-            if (y1 > y2) {
-                return 0;
-            }
-            else {
-                return 1;
-            }
+        if (y1 > y2) {
+            return 0;
         }
-
+        else {
+            return 1;
+        }
+    }
+    else {
         return 1;
     }
+    
 }
 
 int main(void) {
