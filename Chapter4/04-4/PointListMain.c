@@ -3,13 +3,38 @@
 #include "Point.c"
 #include "DLinkedList.c"
 
+// 정렬 규칙
+int pointSort(LData d1, LData d2) {
+    int x1 = d1->xpos, x2 = d2->xpos;
+    int y1 = d1->xpos, y2 = d2->ypos;
+
+    if (x1 > x2) {
+        return 0;
+    }
+    else {
+        // x가 같을 경우 y로 판단
+        if (x1 == x2) {
+            if (y1 > y2) {
+                return 0;
+            }
+            else {
+                return 1;
+            }
+        }
+
+        return 1;
+    }
+}
+
 int main(void) {
     List list;
     Point compPos;
     Point * ppos;
 
     // 초기화 
-    ListInit(&list);    
+    ListInit(&list);
+
+    SetSortRule(&list, pointSort);
 
     // 4개의 데이터 저장
     ppos = (Point*)malloc(sizeof(Point));
