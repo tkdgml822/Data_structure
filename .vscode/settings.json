@@ -8,6 +8,8 @@
     "vector": "c",
     "clinkedlist.h": "c",
     "iterator": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "code-runner.ignoreSelection": "true",
+    "dbdlinkedlist.h": "c"
   }
 }
