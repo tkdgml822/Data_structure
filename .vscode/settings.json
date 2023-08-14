@@ -1,6 +1,13 @@
 {
   "files.associations": {
     "stdio.h": "c",
-    "dlinkedlist.h": "c"
+    "dlinkedlist.h": "c",
+    "array": "c",
+    "string": "c",
+    "string_view": "c",
+    "vector": "c",
+    "clinkedlist.h": "c",
+    "iterator": "c",
+    "stdlib.h": "c"
   }
 }
