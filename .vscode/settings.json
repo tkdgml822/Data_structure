@@ -10,6 +10,7 @@
     "iterator": "c",
     "stdlib.h": "c",
     "code-runner.ignoreSelection": "true",
-    "dbdlinkedlist.h": "c"
+    "dbdlinkedlist.h": "c",
+    "arraylist.h": "c"
   }
 }
