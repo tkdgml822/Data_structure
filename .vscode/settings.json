@@ -11,6 +11,13 @@
     "stdlib.h": "c",
     "code-runner.ignoreSelection": "true",
     "dbdlinkedlist.h": "c",
-    "arraylist.h": "c"
+    "arraylist.h": "c",
+    "cllinkedlist.h": "c",
+    "__config": "c",
+    "__hash_table": "c",
+    "__locale": "c",
+    "__string": "c",
+    "tuple": "c",
+    "version": "c"
   }
 }
