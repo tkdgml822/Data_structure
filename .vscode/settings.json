@@ -18,6 +18,8 @@
     "__locale": "c",
     "__string": "c",
     "tuple": "c",
-    "version": "c"
+    "version": "c",
+    "string.h": "c",
+    "cstring": "c"
   }
 }

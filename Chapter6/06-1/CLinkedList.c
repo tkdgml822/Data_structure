@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "CLinkedList.h"
 
 typedef CList List;
