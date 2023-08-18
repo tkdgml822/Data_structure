@@ -38,24 +38,28 @@ int WhoPrecOp(char op1, char op2) {
 void ConvToRPNExp(char exp[]) {
     Stack stack;
     int expLen = strlen(exp);
+    // exp의 배열의 길이만큼 공간 확보
     char * convExp = (char*)malloc(expLen + 1);
 
     int i, idx = 0;
     char tok, popOp;
 
     // convExp을 0으로 전부 초기화
+    // memset(대상, 초기화 할 값, 어느정도 값으로 초기화 할지)
     memset(convExp, 0, sizeof(char) * expLen + 1);
     StackInit(&stack);
 
     for(i = 0; i < expLen; i++) {
         tok = exp[i];
         // '\0'이 들어가는 것을 막기위해 쓰입니다. 그리고 숫자만 들어갑니다.
+        // 예) '1' -> '0이 이아닌 다른 값', 'H' -> 0
         if(isdigit(tok)) {
             convExp[idx++] = tok;
         }
         else {
             switch(tok) {
                 case '(':
+                    // 
                     SPush(&stack, tok);
                     break;
                 case ')':

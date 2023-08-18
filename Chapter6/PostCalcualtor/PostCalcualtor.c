@@ -16,6 +16,7 @@ int EvalRPNExp(char exp[]) {
         tok = exp[i];
 
         if(isdigit(tok)) {
+            // 숫자면 정수로 바꿔서 스택에 쌓아준다.
             SPush(&stack, tok - '0');
         }
         else {
