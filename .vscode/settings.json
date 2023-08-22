@@ -24,6 +24,8 @@
     "infixcalculator.h": "c",
     "postcalcualtor.h": "c",
     "infixtopostfix.h": "c",
-    "listbasestack.h": "c"
+    "listbasestack.h": "c",
+    "dequebasequeue.h": "c",
+    "deque.h": "c"
   }
 }
