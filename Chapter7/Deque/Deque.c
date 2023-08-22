@@ -8,7 +8,7 @@ void DequeInit(Deque * pdeq) {
     pdeq->tail = NULL;
 }
 
-int DISEmpty(Deque * pdeq) {
+int DQIsEmpty(Deque * pdeq) {
     if(pdeq->head == NULL) {
         return TRUE;
     }
@@ -22,21 +22,19 @@ void DQAddFirst(Deque * pdeq, Data data) {
     Node * newNode = (Node*)malloc(sizeof(Node));
     newNode->data = data;
 
+    newNode->next = pdeq->head;
+
     // 데이터가 하나도 없을 때
-    if(pdeq->head == NULL) {
-        newNode->next = NULL;
-        newNode->prev = NULL;
-        
-        newNode = pdeq->head;
-        newNode = pdeq->tail;
+    if(DQIsEmpty(pdeq)) {  
+        pdeq->tail= newNode;
     }
     // 데이터가 한개이상 있을 때
     else {
-        newNode->prev = NULL;
-        newNode->next = pdeq->head;
         pdeq->head->prev = newNode;
-        newNode = pdeq->head;
     }
+
+    newNode->prev = NULL;
+    pdeq->head = newNode;
 }
 
 // 덱의 꼬리에 데이터 추가
@@ -44,36 +42,45 @@ void DQAddLast(Deque * pdeq, Data data) {
     Node * newNode = (Node*)malloc(sizeof(Node));
     newNode->data = data;
 
+    newNode->prev = pdeq->tail;
+
     // 데이터가 하나도 없을 때
-    // 데이터가 하나도 없을 때
-    if(pdeq->head == NULL) {
-        newNode->next = NULL;
-        newNode->prev = NULL;
-        
-        newNode = pdeq->head;
-        newNode = pdeq->tail;
+    if(DQIsEmpty(pdeq)) {
+        pdeq->head = newNode;
     }
     else {
-        newNode->next = NULL;
-        newNode->prev = pdeq->tail;
         pdeq->tail->next = newNode;
-        newNode = pdeq->tail;
     }
+
+    newNode->next = NULL;
+    pdeq->tail = newNode;
 }
 
 // 덱의 머리에서 데이터 삭제
 Data DQRemoveFirst(Deque * pdeq) {
     // 삭제될 데이터
-    Data data = pdeq->head->data;
+    Data data;
     Node * rpos = pdeq->head;
-    
-    // 머리 다음에 있는거 NULL로 해주기
-    pdeq->head->next->prev = NULL;
-    // 머리 오른쪽으로 옮기기
-    pdeq->head->next = pdeq->head;
 
+    if(DQIsEmpty(pdeq)) {
+        printf("Deque Memory Error!");
+        exit(-1);
+    }
+    data = pdeq->head->data;
+
+    // 머리 오른쪽으로 옮기기
+    pdeq->head = pdeq->head->next;
     // 메모리 해제
     free(rpos);
+
+    // 데이터가 전부 없을때
+    if(pdeq->head == NULL) {
+        pdeq->tail = NULL;
+    }
+    // 머리에 있는 노드 삭제후 전 노드를 가르키고 있는 prev을 NULL로 초기화 해줌
+    else {
+        pdeq->head->prev = NULL;
+    }
     
     // 삭제된 데이터 반환    
     return data;
@@ -81,28 +88,45 @@ Data DQRemoveFirst(Deque * pdeq) {
 
 // 덱의 꼬리에서 데이터 삭제
 Data DQRemoveLast(Deque * pdeq) {
-    Data data = pdeq->tail->data;
+    Data data;
     Node * rpos = pdeq->tail;
 
-    pdeq->tail->prev->next = NULL;  
-    // 꼬리 원쪽으로 옮기기
-    pdeq->tail->prev = pdeq->tail;
+    if(DQIsEmpty(pdeq)) {
+        printf("Deque Memory Error!");
+        exit(-1);
+    }
+    data = pdeq->tail->data;
 
+    // 꼬리 원쪽으로 옮기기
+    pdeq->tail = pdeq->tail->prev;
     free(rpos);
 
+    if(pdeq->tail == NULL) {
+        pdeq->head = NULL;
+    }
+    else {
+        pdeq->tail->next = NULL;  
+    }
+    
     return data;
 }
 
 // 덱의 머리에서 데이터 참조
 Data DQGetFirst(Deque * pdeq) {
-    Data data = pdeq->head->data;
-    
-    return data;
+     if(DQIsEmpty(pdeq)) {
+        printf("Deque Memory Error!");
+        exit(-1);
+    }
+
+    return pdeq->head->data;
 }
 
 // 덱의 꼬리에서 데이터 참조
 Data DQGetLast(Deque * pdeq) {
-    Data data = pdeq->tail->data;
+    if(DQIsEmpty(pdeq)) {
+        printf("Deque Memory Error!");
+        exit(-1);
+    }
 
-    return data;
+    return pdeq->tail->data;
 }

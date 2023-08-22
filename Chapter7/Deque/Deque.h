@@ -20,7 +20,7 @@ typedef struct _dlDeque {
 typedef DLDeque Deque;
 
 void DequeInit(Deque * pdeq);
-int DISEmpty(Deque * pdeq);
+int DQIsEmpty(Deque * pdeq);
 
 void DQAddFirst(Deque * pdeq, Data data);   // 덱의 머리에 데이터 추가
 void DQAddLast(Deque * pdeq, Data data);    // 덱의 꼬리에 데이터 추가
