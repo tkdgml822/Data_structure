@@ -71,16 +71,33 @@ void ShowNodeData(int data)
 		printf("%c ", data);
 }
 
+// 전위 표현씩
 void ShowPrefixTypeExp(BTreeNode * bt)
 {
 	PreorderTraverse(bt, ShowNodeData);
 }
 
+// 중위 표현씩
 void ShowInfixTypeExp(BTreeNode * bt)
-{
-	InorderTraverse(bt, ShowNodeData);
+{	
+	if(bt == NULL) {
+		return;
+	}
+
+	if(bt->left != NULL && bt->right != NULL) {
+		printf("( ");
+	}
+
+	ShowInfixTypeExp(bt->left);
+	ShowNodeData(bt->data);
+	ShowInfixTypeExp(bt->right);
+
+	if(bt->left != NULL && bt->right != NULL) {
+		printf(") ");
+	}
 } 
 
+// 후위 표현씩
 void ShowPostfixTypeExp(BTreeNode * bt)
 {
 	PostorderTraverse(bt, ShowNodeData);
