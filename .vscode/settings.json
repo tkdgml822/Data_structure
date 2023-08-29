@@ -26,6 +26,7 @@
     "infixtopostfix.h": "c",
     "listbasestack.h": "c",
     "dequebasequeue.h": "c",
-    "deque.h": "c"
+    "deque.h": "c",
+    "usefulheap.h": "c"
   }
 }
