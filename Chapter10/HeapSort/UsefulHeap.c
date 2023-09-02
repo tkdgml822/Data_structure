@@ -81,7 +81,7 @@ HData HDelete(Heap * ph)
 	int parentIdx = 1;
 	int childIdx;
 
-	while(childIdx = GetHiPriChildIDX(ph, parentIdx))
+	while(childIdx = (GetHiPriChildIDX(ph, parentIdx)))
 	{
 	//	if(lastElem.pr <= ph->heapArr[childIdx].pr)
 		if(ph->comp(lastElem, ph->heapArr[childIdx]) >= 0)
